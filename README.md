@@ -1,5 +1,5 @@
 
-# Structured-query-language
+# Structured-query-language. Proj-1 
 
 In this part, we have looked at a dataset :
 https://www.kaggle.com/datasets/larsen0966/student-performance-data-set?resource=download
