@@ -65,5 +65,19 @@ FROM "student-por"
 WHERE "student-por"."sex" = 'F'
   AND "student-por"."address" = 'U'
   AND "student-por"."failures" = 0;
+  
+--- Identify Students Showing Improvement
+
+SELECT "school", "sex", "age"
+FROM "student-por"
+WHERE "failures" = 0
+  AND "schoolsup" = 'yes'
+  AND "G3" > "G1"
+  AND "G2" > "G1";
+
+
+
+
+
 
 
