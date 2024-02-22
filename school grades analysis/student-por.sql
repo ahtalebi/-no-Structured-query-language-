@@ -16,6 +16,30 @@ SELECT age, SUM(absences) AS total_absences FROM "student-por" GROUP BY age;
 
 SELECT * FROM "student-por" WHERE age BETWEEN 15 AND 17 AND failures > 0;
 
+
+--- frequency of each grade using the COUNT(*) function. we can save the resultd table and plot the histogram or plot in the pgadmin4
+SELECT "G3" AS grade, COUNT(*) AS frequency
+FROM "student-por"
+GROUP BY "G3"
+ORDER BY "G3";
+
+
+---  comparison by Gender
+
+SELECT 
+    "sex",
+    AVG("G3") AS avg_grade,
+    COUNT(*) AS num_students
+FROM 
+    "student-por"
+	GROUP BY 
+    "sex";
+
+
+
+
+
+
 ---  group rows by reason and count number of each group's type
 
 SELECT reason, COUNT(*) AS count
@@ -76,8 +100,49 @@ WHERE "failures" = 0
   AND "G2" > "G1";
 
 
+--- impact of Extracurricular Activities on thr avg grade
+
+SELECT 
+    "student-por"."activites",
+    AVG("G3") AS avg_grade,
+    COUNT(*) AS num_students
+FROM 
+    "student-por"
+GROUP BY 
+    "student-por"."activites";
+
+--- This query analyzes the improvement or decline in students' grades from the first semester (G1) 
+--- to the final semester (G3). It calculates the percentage of students who improved their grades, the 
+--- percentage who maintained their grades, and the percentage who experienced a decline.
 
 
 
+SELECT 
+    CASE 
+        WHEN "G3" > "G1" THEN 'Improved'
+        WHEN "G3" = "G1" THEN 'Maintained'
+        ELSE 'Declined'
+    END AS grade_change,
+    COUNT(*) * 100.0 / (SELECT COUNT(*) FROM "student-por") AS percentage
+FROM 
+    "student-por"
+GROUP BY 
+    grade_change;
+
+
+--- parents Education level and Performance
+
+SELECT 
+    "Medu",
+    "Fedu",
+    AVG("G3") AS avg_grade
+FROM 
+    "student-por"
+GROUP BY 
+    "Medu",
+    "Fedu"
+ORDER BY 
+    "Medu" ASC,
+    "Fedu" ASC;
 
 
