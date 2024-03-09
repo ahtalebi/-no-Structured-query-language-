@@ -2,9 +2,6 @@
 
 
 
-# Structured-query-language. Proj-1 
+# Structured-query-language. Proj-1 . cleaning a dataset
 
-In this part, we have looked at a dataset :
-https://www.kaggle.com/datasets/larsen0966/student-performance-data-set?resource=download
-
-and have done some queries on that with the help of SQL language. Here is more details about the columns. 
+from here https://python.plainenglish.io/automate-basic-data-cleaning-using-a-python-function-a80f6e724791
