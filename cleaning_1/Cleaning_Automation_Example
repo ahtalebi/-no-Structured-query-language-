@@ -1,0 +1,21 @@
+SELECT * FROM "Cleaning_Automation_Example"
+
+
+
+--- prints the name of columns 
+SELECT column_name
+FROM information_schema.columns
+WHERE table_name = 'Cleaning_Automation_Example';
+
+
+select COUNT(*) as number_ofrows
+from "Cleaning_Automation_Example"
+
+
+SELECT 
+    column_name,
+    (COUNT(*) - COUNT(column_name)) / COUNT(*) * 100 AS percentage_null
+FROM 
+    Cleaning_Automation_Example
+GROUP BY 
+    column_name;
